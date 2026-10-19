@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تحقیق در عملیات | نمرات کوئیز اول</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>body{font-family:Vazirmatn,Tahoma,sans-serif;background:radial-gradient(circle at top,#1e293b,#020617)}.card{background:rgba(30,41,59,.6);border:1px solid #334155;border-radius:1rem;backdrop-filter:blur(6px)}</style></head>
+<body class="text-slate-100 min-h-screen">
+<div class="max-w-6xl mx-auto p-4 md:p-8">
+<header class="text-center mb-6"><h1 class="text-3xl md:text-4xl font-black text-amber-400">تحقیق در عملیات</h1><p class="text-slate-400 mt-2">کنترل‌روم نتایج کوئیز گروهی اول</p></header>
+<nav class="flex gap-2 justify-center mb-6">
+<button id="t1" class="px-5 py-2 rounded-full bg-amber-500 text-slate-900 font-bold">داشبورد کلاس</button>
+<button id="t2" class="px-5 py-2 rounded-full bg-slate-700">مشاهده نمره من</button></nav>
+
+<section id="p1">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4" id="stats"></div>
+<div class="grid md:grid-cols-2 gap-4 mb-4">
+<div class="card p-4"><h3 class="font-bold mb-2">توزیع نمرات</h3><canvas id="c1"></canvas></div>
+<div class="card p-4"><h3 class="font-bold mb-2">وضعیت حضور و عملکرد</h3><canvas id="c2"></canvas></div></div>
+<div class="card p-5"><h3 class="font-bold text-amber-400 mb-3">🎬 بریفینگ مأموریت: چرا تحقیق در عملیات؟</h3>
+<div class="grid md:grid-cols-2 gap-3 text-sm leading-7 text-slate-300">
+<p><b class="text-white">پیدایش:</b> در جنگ جهانی دوم، تیم‌های ریاضی‌دان بریتانیا برای استقرار بهینهٔ رادارها و اسکورت کاروان‌ها به کار گرفته شدند؛ از همان‌جا «Operations Research» متولد شد.</p>
+<p><b class="text-white">سیمپلکس:</b> جرج دانتزیگ در ۱۹۴۷ الگوریتم سیمپلکس را ساخت. ایده: روی رأس‌های ناحیهٔ شدنی حرکت کن تا به بهینه برسی.</p>
+<p><b class="text-white">قضیهٔ دوگانی:</b> هر مسئلهٔ برنامه‌ریزی خطی یک دوگان دارد؛ مقدار بهینهٔ هر دو برابر است و متغیرهای دوگان همان «قیمت سایه‌ای» منابع‌اند.</p>
+<p><b class="text-white">کاربرد واقعی:</b> زمان‌بندی پروازها، مسیریابی ناوگان، برنامه‌ریزی تولید، تخصیص منابع و زنجیرهٔ تأمین.</p>
+<p class="md:col-span-2 italic border-r-4 border-amber-500 pr-3">«مدل‌سازی نیمی از نبرد است: متغیرها را درست تعریف کن، قیدها را دقیق بنویس، آنگاه تابع هدف خودش راه را نشان می‌دهد.»</p></div></div>
+</section>
+
+<section id="p2" class="hidden max-w-md mx-auto">
+<div class="card p-6 text-center">
+<h3 class="font-bold mb-4">🔐 دریافت نمره با کد دانشجویی</h3>
+<input id="code" inputmode="numeric" placeholder="کد دانشجویی" class="w-full p-3 rounded-lg bg-slate-900 border border-slate-600 text-center tracking-widest" dir="ltr">
+<button id="go" class="mt-3 w-full py-3 rounded-lg bg-amber-500 text-slate-900 font-bold">نمایش نمره</button>
+<div id="res" class="mt-5"></div>
+<p class="text-xs text-slate-500 mt-4">به دلیل حفظ حریم خصوصی، نام هیچ دانشجویی نمایش داده نمی‌شود.</p></div></section>
+</div>
+<script>
+const DATA={"96967c8f6690ec920921d403cb11e21140c6c35b8c54327cbedf4698712ad904": 100.0, "4b825e3163b886695cd92ac624b8dc7f3d5f93220dbbe8c71693362de677aa54": 100.0, "b85b4fe419c0fd4c918a6ec6d9634e19c0b97c0a2ebf60ea875c217a6876b180": 100.0, "8e9653263f45dea1b6d329c645c50ebb32276e007dffd4a6b2ae142062554b7f": null, "8fcfa47faece8e22247a9a889b0197345f18e3b30bd4d92025c2cabf8a3ea648": 70.0, "e470ac7d1241b3e0d92ec1e4030629e4bda95b4ae9529c02154eedc72dfc7055": 70.0, "fd81542d6ec1547581d8acd30bb5a92a85f2664844c219b487f3cb7d37a9a352": 70.0, "82028913b912096fc7c309b60dc690d73a6c5ac13d23f4b5132d12926aa90d45": 20.0, "4ca7295f203d80931feefd2d61f699952ddd32685b378b18337ce23084d23451": 100.0, "59770d9a845bfcd403cedba56f90d48432e982f9c90e90b5b6be32f4b2af1929": 90.0, "130641a2ec18589d9d23cf54df23510461451bd1fdf206831adfd8fe72b8c813": 90.0, "ec5f062e283a58a3d0ef94d71086f63286cc09ee4e66356feb37dbbc97e34ae0": 90.0, "c062fbed31885b0bc804fc660602cc284c558791e0864289516f9a63f692595b": 90.0, "6d3070ee588b5a07c16d5e5abd8deb32e89b797d3c309748d5ac7ce5f8354e5e": 100.0, "a84af166f66fb24e4debb8741bde6e8fe30a8f30917123c3190f93aef5cceb43": 100.0, "da320d00e8b70c5860c270737b2b6f1e4ee9631955bb4b9f79e1451e773af58a": 100.0, "9f75c79e024a4863bcddecb836af56ab021ea19eee6186c56f6815fc07d67e05": 100.0, "d3b300e88e5de5f011e5a1ac09fc3bf1a1967dbf091e06a5c1af4d05b6024958": 100.0, "252d5623913db6d96da78f2b7bb43b0b277c7881e8451389085e63d5de3142ab": null, "137b9aeadd9e9887c2a93b7ac2a32579fd6c45cffe188e7f486830cf67fc75ad": null, "78c62ed6f49d657a4ea56db9560e93e15997a4db5a9bd91617a27851ad78188a": 100.0, "3de11beedd46ac97b22db584148a333248e4fce0ff9d6f1166953db254c0de99": 100.0, "f9791bc93d04327c06df618091d5ca9623da5052a3c98493af5da8b4d1cfb6a3": 100.0, "084b436c802f015ea4181ca570a4927a0a53954a38f30e39bd2fc8e600210832": 100.0, "6ddd34a5cc2786a2b7a4f3e8f28e691b3e41d4cfcbd1124b202a94e72589ff45": 100.0, "c9ee19eef62c5b41498ae5aff83aca48d8c02406dd291c80c93d60837d1f4563": 100.0, "24031676f89ccfc2b35f330faf88e30e665273b375118fd2e07d0daf3326d38f": 100.0, "2045e9184a4800520f1276fc30c80ff69c6a0c2b54e0e84df34257b9aad8223b": 100.0, "ec10e12dd08807f330d2fcf3529c1080327b6bf7845f1d40aa6b1481cd010b00": 100.0, "dd96d8d244d004b911fb4df91b3fc379df3d722aecbf1d5e4ef99942bcb45da1": 100.0, "bb36cf1265a2246bb393b1afd9b6250982b2f81fadae875b42f55c3c5dc10c81": 100.0, "77413e6f555fd7871fe932162e3abc43a9ecf8722abb920f9d42b90cc646b016": 100.0, "efcfed59c3f35236e5a180288e946ab23e27a3be4bb4d3565fb16a7c6761b872": 100.0, "8f8cf26822a0fca60de192c1fb44dea265616e955a9e13308319b2c00eeda421": 100.0, "e7c11c4f4d18905677dce398b851a5d33ccf01f186b37322435598e8869e5c6d": 100.0, "9beb66a212923abc8fcc91d91c88785bf493791a2de5b873f6f458a0d7e22da0": 100.0, "675cae1e183013939dd8a80f77ec8f8a4e90f90f59d13cbac8e440dd2a569d95": 100.0, "640e98c90f8a4fd5ce931ca1041c95bb4dfe1864f07e2236dce5eee0b88a60d6": 100.0, "356f66cd1c1527bbd0e9e9840550225e0b062bc8cb2184128a74bd0863480976": 100.0}, SALT="OR-quiz1-";
+const fa=s=>String(s).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const norm=s=>s.replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).trim();
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+const all=Object.values(DATA), sc=all.filter(v=>v!==null), absent=all.length-sc.length;
+const avg=sc.reduce((a,b)=>a+b,0)/sc.length, sorted=[...sc].sort((a,b)=>a-b), med=sorted[Math.floor(sorted.length/2)];
+const st=[["میانگین",avg.toFixed(1),"amber"],["بیشترین",Math.max(...sc),"emerald"],["کمترین",Math.min(...sc),"rose"],["میانه",med,"sky"],["غایب",absent,"slate"]];
+document.getElementById('stats').innerHTML=st.map(([l,v,c])=>`<div class="card p-4 text-center"><div class="text-slate-400 text-sm">${l}</div><div class="text-3xl font-black text-${c}-400">${fa(v)}</div></div>`).join('');
+const vals=[...new Set(sc)].sort((a,b)=>a-b);
+Chart.defaults.color='#cbd5e1';Chart.defaults.font.family='Vazirmatn';
+new Chart(c1,{type:'bar',data:{labels:vals.map(fa),datasets:[{label:'تعداد دانشجو',data:vals.map(v=>sc.filter(x=>x===v).length),backgroundColor:'#f59e0b',borderRadius:6}]},options:{scales:{y:{ticks:{precision:0}}}}});
+const hi=sc.filter(v=>v>=80).length,mid=sc.filter(v=>v>=50&&v<80).length,lo=sc.length-hi-mid;
+new Chart(c2,{type:'doughnut',data:{labels:['۸۰ به بالا','۵۰ تا ۷۹','زیر ۵۰','غایب'],datasets:[{data:[hi,mid,lo,absent],backgroundColor:['#34d399','#fbbf24','#fb7185','#64748b'],borderColor:'#0f172a'}]}});
+const tabs=(a)=>{p1.classList.toggle('hidden',a!=1);p2.classList.toggle('hidden',a!=2);
+t1.className='px-5 py-2 rounded-full font-bold '+(a==1?'bg-amber-500 text-slate-900':'bg-slate-700');
+t2.className='px-5 py-2 rounded-full font-bold '+(a==2?'bg-amber-500 text-slate-900':'bg-slate-700')};
+t1.onclick=()=>tabs(1);t2.onclick=()=>tabs(2);
+async function look(){const c=norm(code.value);if(!c)return;
+const k=await sha(SALT+c);
+if(!(k in DATA)){res.innerHTML='<p class="text-rose-400">کد دانشجویی یافت نشد.</p>';return}
+const v=DATA[k];
+res.innerHTML=v===null?'<p class="text-slate-300 text-lg">برای این کد، غیبت ثبت شده است.</p>':`<div class="text-slate-400">نمرهٔ کوئیز گروهی اول</div><div class="text-6xl font-black text-amber-400 my-2">${fa(v)}</div><div class="text-slate-500">از ۱۰۰</div>`}
+go.onclick=look;code.addEventListener('keydown',e=>{if(e.key==='Enter')look()});
+</script></body></html>
