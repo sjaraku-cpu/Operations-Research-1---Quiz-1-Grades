@@ -1,61 +1,620 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تحقیق در عملیات | نمرات کوئیز اول</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<style>body{font-family:Vazirmatn,Tahoma,sans-serif;background:radial-gradient(circle at top,#1e293b,#020617)}.card{background:rgba(30,41,59,.6);border:1px solid #334155;border-radius:1rem;backdrop-filter:blur(6px)}</style></head>
-<body class="text-slate-100 min-h-screen">
-<div class="max-w-6xl mx-auto p-4 md:p-8">
-<header class="text-center mb-6"><h1 class="text-3xl md:text-4xl font-black text-amber-400">تحقیق در عملیات</h1><p class="text-slate-400 mt-2">کنترل‌روم نتایج کوئیز گروهی اول</p></header>
-<nav class="flex gap-2 justify-center mb-6">
-<button id="t1" class="px-5 py-2 rounded-full bg-amber-500 text-slate-900 font-bold">داشبورد کلاس</button>
-<button id="t2" class="px-5 py-2 rounded-full bg-slate-700">مشاهده نمره من</button></nav>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>کلاس تحقیق در عملیات ۱ - دکتر سعید رضائی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070f;--c1:#00f0ff;--c2:#b400ff;--c3:#ff2e93;--txt:#e8ecff;--mut:#8f97c4;--glass:rgba(255,255,255,.06);--bd:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;line-height:1.9;letter-spacing:0;font-weight:400;min-height:100vh;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:-2;width:100%;height:100%}
+.aurora{position:fixed;inset:-20%;z-index:-1;pointer-events:none;background:
+radial-gradient(40% 40% at 20% 20%,rgba(0,240,255,.18),transparent),
+radial-gradient(35% 35% at 80% 30%,rgba(180,0,255,.2),transparent),
+radial-gradient(40% 40% at 50% 90%,rgba(255,46,147,.14),transparent);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,-3%) scale(1.15) rotate(4deg)}}
+a{color:inherit;text-decoration:none}
+.grad{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:shift 6s linear infinite}
+@keyframes shift{to{background-position:200%}}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4vw;background:rgba(7,7,15,.65);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.2rem}
+.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#000;font-weight:900;box-shadow:0 0 20px var(--c1)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{padding:6px 14px;border-radius:999px;color:var(--mut);transition:.3s;font-size:.95rem}
+nav a:hover,nav a.active{color:#fff;background:var(--glass);box-shadow:inset 0 0 0 1px var(--bd),0 0 16px rgba(0,240,255,.25)}
+nav a.cta{background:linear-gradient(90deg,var(--c1),var(--c2));color:#000;font-weight:700}
+.burger{display:none;background:var(--glass);border:1px solid var(--bd);color:#fff;font-size:1.4rem;border-radius:10px;padding:2px 12px;cursor:pointer}
+main{max-width:1200px;margin:auto;padding:30px 4vw 60px;position:relative}
+.page{display:none}
+.page.active{display:block;animation:pageIn .7s cubic-bezier(.2,.8,.2,1)}
+.page.leaving{display:block;animation:pageOut .25s ease forwards}
+@keyframes pageIn{from{opacity:0;transform:translateY(30px) scale(.98);filter:blur(8px)}}
+@keyframes pageOut{to{opacity:0;transform:translateY(-14px);filter:blur(6px)}}
+.hero{text-align:center;padding:70px 0 50px}
+.chip{display:inline-block;padding:4px 16px;border:1px solid var(--c1);color:var(--c1);border-radius:999px;font-size:.85rem;box-shadow:0 0 18px rgba(0,240,255,.3);direction:ltr}
+.hero h1{font-size:clamp(2.2rem,6vw,4.6rem);line-height:1.4;margin:18px 0;font-weight:900}
+.hero p{max-width:640px;margin:auto;color:var(--mut);font-size:1.1rem}
+.row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:30px 0}
+.btn{display:inline-block;padding:12px 28px;border-radius:14px;font:inherit;font-weight:700;cursor:pointer;border:1px solid var(--bd);color:#fff;background:var(--glass);transition:.3s}
+.btn.primary{background:linear-gradient(90deg,var(--c1),var(--c2));color:#000;border:0;box-shadow:0 0 28px rgba(0,240,255,.4)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 34px rgba(180,0,255,.5)}
+.hero-stats{display:flex;justify-content:center;gap:clamp(20px,6vw,70px);margin-top:20px}
+.hero-stats b{display:block;font-size:2.2rem;color:var(--c1);text-shadow:0 0 18px var(--c1)}
+.hero-stats small{color:var(--mut)}
+.grid{display:grid;gap:18px}
+.cards3{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.cards2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:18px}
+.glass,.card{background:var(--glass);border:1px solid var(--bd);border-radius:20px;backdrop-filter:blur(14px);padding:22px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(0,240,255,.16),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover{transform:translateY(-6px);border-color:rgba(0,240,255,.5);box-shadow:0 14px 44px rgba(0,240,255,.15),0 0 0 1px rgba(180,0,255,.25)}
+.card:hover::before{opacity:1}
+.card i{font-style:normal;font-size:2rem}
+.card h3{margin:6px 0;font-size:1.2rem}
+.card p{color:var(--mut);font-size:.95rem}
+.go span{color:var(--c1);display:inline-block;margin-top:8px;transition:.3s}
+.go:hover span{transform:translateX(-6px)}
+.title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:4px}
+.sub{color:var(--mut);margin-bottom:26px}
+.formula{direction:ltr;text-align:left;font-family:"Cambria Math",Consolas,monospace;background:rgba(0,0,0,.4);border:1px dashed rgba(0,240,255,.35);color:#9ff6ff;padding:10px 14px;border-radius:12px;margin:8px 0;font-size:.92rem;white-space:pre-wrap}
+.card ul{padding-right:20px;color:var(--mut);font-size:.93rem;margin-top:6px}
+.tag{display:inline-block;font-size:.75rem;padding:1px 10px;border-radius:99px;background:rgba(180,0,255,.2);border:1px solid rgba(180,0,255,.5);margin-left:6px;direction:ltr}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{font:inherit;background:var(--glass);border:1px solid var(--bd);color:var(--mut);padding:5px 16px;border-radius:99px;cursor:pointer;transition:.3s}
+.filters button.on,.filters button:hover{color:#000;background:var(--c1);box-shadow:0 0 18px var(--c1)}
+.film{padding:0}
+.poster{height:150px;display:grid;place-items:center;font-size:3.2rem;background:linear-gradient(135deg,var(--a),var(--b));position:relative}
+.poster::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 2px,transparent 2px 4px)}
+.film .body{padding:16px 20px 20px}
+.film h3{direction:ltr;text-align:right;font-size:1.1rem}
+.film:hover{box-shadow:0 0 40px var(--a),0 0 0 1px var(--a)}
+.film:hover .poster{filter:saturate(1.5) brightness(1.15)}
+.meta{color:var(--c1);font-size:.82rem;direction:ltr;text-align:right}
+.soft .logo2{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-weight:900;color:#000;background:linear-gradient(135deg,var(--c1),var(--c3));margin-bottom:8px;direction:ltr}
+.kpi b{display:block;font-size:2.2rem;color:var(--c1);text-shadow:0 0 16px var(--c1)}
+.kpi small{color:var(--mut)}
+.bars{display:flex;align-items:flex-end;gap:10px;height:210px;padding-top:20px}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;text-align:center;font-size:.8rem;color:var(--mut)}
+.bar div{width:100%;max-width:60px;border-radius:10px 10px 0 0;background:linear-gradient(180deg,var(--c1),var(--c2));box-shadow:0 0 18px rgba(0,240,255,.4);height:0;transition:height 1.2s cubic-bezier(.2,.8,.2,1);position:relative}
+.bar div em{position:absolute;top:-22px;inset-inline:0;font-style:normal;color:#fff}
+.hrow{display:grid;grid-template-columns:70px 1fr 44px;gap:10px;align-items:center;margin:8px 0;font-size:.9rem}
+.track{height:12px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}
+.track i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--c2),var(--c3));transition:width 1.3s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px var(--c3)}
+.donutWrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:center}
+.donut{width:180px;height:180px;border-radius:50%;-webkit-mask:radial-gradient(circle 54px,transparent 98%,#000 100%);mask:radial-gradient(circle 54px,transparent 98%,#000 100%);filter:drop-shadow(0 0 14px rgba(0,240,255,.4))}
+.legend{list-style:none}
+.legend li::before{content:"";display:inline-block;width:12px;height:12px;border-radius:4px;background:var(--k);margin-left:8px}
+.anon{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:10px}
+.anon div{direction:ltr;display:flex;justify-content:space-between;padding:6px 12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--bd);font-size:.85rem;transition:.3s}
+.anon div:hover{border-color:var(--c1);box-shadow:0 0 14px rgba(0,240,255,.35)}
+.anon b{color:var(--c1)}.anon .bad b{color:var(--c3)}
+.search{display:flex;gap:10px;padding:10px;max-width:640px;margin-bottom:26px;border-radius:20px;transition:.3s}
+.search:focus-within{box-shadow:0 0 34px rgba(0,240,255,.35);border-color:var(--c1)}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;font:inherit;font-size:1.1rem;padding:0 14px;direction:ltr;text-align:right;letter-spacing:1px}
+.res-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.pill{padding:3px 14px;border-radius:99px;border:1px solid var(--c1);color:var(--c1);font-size:.85rem}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.big{font-size:3rem;font-weight:900;line-height:1.2}
+.ring{--p:0;width:120px;height:120px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--c1) calc(var(--p)*1%),rgba(255,255,255,.08) 0);position:relative;margin:6px auto;transition:.3s}
+.ring::before{content:"";position:absolute;inset:10px;border-radius:50%;background:#0c0c1a}
+.ring span{position:relative;font-size:1.6rem;font-weight:800}
+.status{display:inline-block;margin-top:8px;padding:4px 14px;border-radius:12px;background:rgba(255,46,147,.15);color:var(--c3);border:1px solid var(--c3)}
+.checks{list-style:none;margin-top:10px}
+.checks li{padding:8px 12px;margin:6px 0;border-radius:12px;background:rgba(0,255,150,.08);border:1px solid rgba(0,255,150,.3);animation:pageIn .6s backwards}
+.empty{color:var(--mut)}
+.err{padding:18px;border-radius:16px;border:1px solid var(--c3);background:rgba(255,46,147,.1);max-width:640px;animation:shake .4s}
+@keyframes shake{25%{transform:translateX(8px)}75%{transform:translateX(-8px)}}
+.reveal{animation:pageIn .7s backwards}
+.lockWrap{margin-top:40px;text-align:center}
+.lockWrap small{display:block;color:var(--mut);margin-top:8px}
+.locked{font:inherit;font-weight:700;padding:14px 34px;border-radius:16px;color:#7b7f9e;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.25);cursor:not-allowed;position:relative;overflow:hidden;pointer-events:none;opacity:.85}
+.locked::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);animation:sheen 3s infinite}
+@keyframes sheen{to{left:120%}}
+.lock{display:inline-block;animation:wob 2.4s infinite}
+@keyframes wob{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-14deg)}92%{transform:rotate(12deg)}}
+footer{text-align:center;color:var(--mut);padding:26px;border-top:1px solid var(--bd);font-size:.9rem}
+@media(max-width:860px){
+  .burger{display:block}
+  nav{position:absolute;top:100%;inset-inline:0;flex-direction:column;background:rgba(7,7,15,.96);padding:12px 4vw;display:none;border-bottom:1px solid var(--bd)}
+  nav.open{display:flex;animation:pageIn .3s}
+  .hero{padding:40px 0 30px}
+  .search{flex-direction:column}
+  .bars{gap:5px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-<section id="p1">
-<div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4" id="stats"></div>
-<div class="grid md:grid-cols-2 gap-4 mb-4">
-<div class="card p-4"><h3 class="font-bold mb-2">توزیع نمرات</h3><canvas id="c1"></canvas></div>
-<div class="card p-4"><h3 class="font-bold mb-2">وضعیت حضور و عملکرد</h3><canvas id="c2"></canvas></div></div>
-<div class="card p-5"><h3 class="font-bold text-amber-400 mb-3">🎬 بریفینگ مأموریت: چرا تحقیق در عملیات؟</h3>
-<div class="grid md:grid-cols-2 gap-3 text-sm leading-7 text-slate-300">
-<p><b class="text-white">پیدایش:</b> در جنگ جهانی دوم، تیم‌های ریاضی‌دان بریتانیا برای استقرار بهینهٔ رادارها و اسکورت کاروان‌ها به کار گرفته شدند؛ از همان‌جا «Operations Research» متولد شد.</p>
-<p><b class="text-white">سیمپلکس:</b> جرج دانتزیگ در ۱۹۴۷ الگوریتم سیمپلکس را ساخت. ایده: روی رأس‌های ناحیهٔ شدنی حرکت کن تا به بهینه برسی.</p>
-<p><b class="text-white">قضیهٔ دوگانی:</b> هر مسئلهٔ برنامه‌ریزی خطی یک دوگان دارد؛ مقدار بهینهٔ هر دو برابر است و متغیرهای دوگان همان «قیمت سایه‌ای» منابع‌اند.</p>
-<p><b class="text-white">کاربرد واقعی:</b> زمان‌بندی پروازها، مسیریابی ناوگان، برنامه‌ریزی تولید، تخصیص منابع و زنجیرهٔ تأمین.</p>
-<p class="md:col-span-2 italic border-r-4 border-amber-500 pr-3">«مدل‌سازی نیمی از نبرد است: متغیرها را درست تعریف کن، قیدها را دقیق بنویس، آنگاه تابع هدف خودش راه را نشان می‌دهد.»</p></div></div>
+#tPanel[hidden]{display:none}
+.tbar{display:flex;flex-wrap:wrap;gap:10px;padding:14px;border-radius:16px;margin:18px 0}
+.tbar input,.tbar select{flex:1 1 160px;padding:10px 12px;border-radius:12px;border:1px solid var(--bd);background:rgba(0,0,0,.4);color:#fff;font:inherit}
+.tbar option{background:#10102a}
+.twrap{overflow-x:auto;border-radius:16px;padding:6px}
+#tTable{width:100%;border-collapse:collapse;min-width:760px}
+#tTable th,#tTable td{padding:10px 12px;text-align:right;border-bottom:1px solid rgba(255,255,255,.08);font-size:.92rem}
+#tTable th{color:var(--c1);position:sticky;top:0;cursor:default}
+#tTable tr:hover td{background:rgba(0,240,255,.06)}
+.rk{padding:2px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.rk.hi{background:rgba(255,46,147,.2);color:#ff2e93;border:1px solid #ff2e93}
+.rk.md{background:rgba(255,200,0,.15);color:#ffc800;border:1px solid #ffc800}
+.rk.lo{background:rgba(0,255,150,.12);color:#00ff96;border:1px solid #00ff96}
+.alert{padding:14px 18px;border-radius:14px;border:1px solid #ff2e93;background:rgba(255,46,147,.1);margin:10px 0}
+.alert.warn{border-color:#ffc800;background:rgba(255,200,0,.08)}
+.alert ul{margin:8px 0 0;padding-inline-start:20px}
+.why{font-size:.8rem;opacity:.8}
+
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="aurora"></div>
+
+<header class="nav">
+  <a class="brand" href="#home"><span class="logo">Σ</span><b>کلاس تحقیق در عملیات ۱ - دکتر سعید رضائی</b></a>
+  <button class="burger" id="burger" aria-label="منو">☰</button>
+  <nav id="menu">
+    <a href="#home" data-p="home">خانه</a>
+    <a href="#concepts" data-p="concepts">مفاهیم و فرمول‌ها</a>
+    <a href="#cinema" data-p="cinema">سینمای OR</a>
+    <a href="#software" data-p="software">نرم‌افزارها</a>
+    <a href="#dashboard" data-p="dashboard">داشبورد کلاس</a>
+    <a href="#portal" data-p="portal" class="cta">پرتال دانشجو</a>
+    <a href="#teacher" data-p="teacher">پرتال استاد 🔐</a>
+  </nav>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="page" id="home">
+  <div class="hero">
+    <span class="chip">Operations Research • تحقیق در عملیات</span>
+    <h1>تصمیم <span class="grad">بهینه</span> بگیر،<br>جهان را <span class="grad">مدل</span> کن</h1>
+    <p>از برنامه‌ریزی خطی تا تئوری صف و شبکه‌ها؛ مرجعی سینمایی و تعاملی برای دانشجویان درس تحقیق در عملیات.</p>
+    <div class="row">
+      <a class="btn primary" href="#portal">ورود به پرتال دانشجو</a>
+      <a class="btn ghost" href="#concepts">شروع یادگیری</a>
+    </div>
+    <div class="hero-stats">
+      <div><b data-count="40">0</b><small>دانشجو</small></div>
+      <div><b data-count="7">0</b><small>مبحث اصلی</small></div>
+      <div><b data-count="12">0</b><small>اثر سینمایی</small></div>
+    </div>
+  </div>
+  <div class="grid cards3">
+    <a class="card glass go" href="#concepts"><i>📐</i><h3>مفاهیم و فرمول‌ها</h3><p>LP، سیمپلکس، دوگان، حمل‌ونقل، تخصیص، صف و شبکه.</p><span>مشاهده ←</span></a>
+    <a class="card glass go" href="#cinema"><i>🎬</i><h3>سینمای تحقیق در عملیات</h3><p>فیلم‌ها و مستندهایی درباره ریاضی و تصمیم‌سازی.</p><span>مشاهده ←</span></a>
+    <a class="card glass go" href="#software"><i>🧰</i><h3>نرم‌افزارها</h3><p>Solver، GAMS، LINGO، OR-Tools، MATLAB و بیشتر.</p><span>مشاهده ←</span></a>
+    <a class="card glass go" href="#dashboard"><i>📊</i><h3>داشبورد کلاس</h3><p>آمار ناشناس کلاس: میانگین، توزیع نمرات و غیبت‌ها.</p><span>مشاهده ←</span></a>
+    <a class="card glass go" href="#portal"><i>🪪</i><h3>پرتال دانشجو</h3><p>با کد دانشجویی، وضعیت کوئیز، غیبت و تمرین را ببین.</p><span>مشاهده ←</span></a>
+    <div class="card glass quote"><i>💡</i><h3>Optimize everything</h3><p>«بهترین تصمیم، پاسخ مسئله‌ای است که درست مدل شده باشد.»</p></div>
+  </div>
 </section>
 
-<section id="p2" class="hidden max-w-md mx-auto">
-<div class="card p-6 text-center">
-<h3 class="font-bold mb-4">🔐 دریافت نمره با کد دانشجویی</h3>
-<input id="code" inputmode="numeric" placeholder="کد دانشجویی" class="w-full p-3 rounded-lg bg-slate-900 border border-slate-600 text-center tracking-widest" dir="ltr">
-<button id="go" class="mt-3 w-full py-3 rounded-lg bg-amber-500 text-slate-900 font-bold">نمایش نمره</button>
-<div id="res" class="mt-5"></div>
-<p class="text-xs text-slate-500 mt-4">به دلیل حفظ حریم خصوصی، نام هیچ دانشجویی نمایش داده نمی‌شود.</p></div></section>
-</div>
+<!-- CONCEPTS -->
+<section class="page" id="concepts">
+  <h2 class="title">مفاهیم و فرمول‌های <span class="grad">OR</span></h2>
+  <p class="sub">روی هر کارت حرکت کنید؛ فرمول‌ها به‌صورت استاندارد (چپ‌به‌راست) نمایش داده می‌شوند.</p>
+  <div class="grid cards2" id="conceptGrid"></div>
+</section>
+
+<!-- CINEMA -->
+<section class="page" id="cinema">
+  <h2 class="title">سینمای <span class="grad">تحقیق در عملیات</span></h2>
+  <p class="sub">آثاری که ریاضی، بهینه‌سازی، ریسک و تصمیم‌سازی را روایت می‌کنند.</p>
+  <div class="filters" id="cinemaFilters"></div>
+  <div class="grid cards3" id="cinemaGrid"></div>
+</section>
+
+<!-- SOFTWARE -->
+<section class="page" id="software">
+  <h2 class="title">نرم‌افزارهای <span class="grad">مرتبط</span></h2>
+  <p class="sub">ابزارهایی که مدل‌های ریاضی را حل می‌کنند.</p>
+  <div class="grid cards3" id="softGrid"></div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="page" id="dashboard">
+  <h2 class="title">داشبورد <span class="grad">کلاس</span></h2>
+  <p class="sub">فقط آمار کلی و کدهای ناشناس؛ هیچ نامی نمایش داده نمی‌شود.</p>
+  <div class="grid kpis" id="kpis"></div>
+  <div class="grid cards2">
+    <div class="card glass"><h3>توزیع نمرات کوئیز گروهی اول</h3><div class="bars" id="distChart"></div></div>
+    <div class="card glass"><h3>وضعیت شرکت در کوئیز</h3><div class="donutWrap"><div class="donut" id="donut"></div><ul class="legend" id="donutLegend"></ul></div></div>
+    <div class="card glass"><h3>میانگین نمره به تفکیک گروه</h3><div class="hbars" id="groupChart"></div></div>
+    <div class="card glass"><h3>توزیع تعداد غیبت</h3><div class="bars" id="absChart"></div></div>
+  </div>
+  <div class="card glass" style="margin-top:18px"><h3>نمرات به‌تفکیک کد ناشناس</h3><div class="anon" id="anonChart"></div></div>
+</section>
+
+<!-- PORTAL -->
+<section class="page" id="portal">
+  <h2 class="title">پرتال <span class="grad">دانشجو</span></h2>
+  <p class="sub">کد دانشجویی خود را وارد کنید (ارقام فارسی یا انگلیسی).</p>
+  <form class="search glass" id="searchForm" autocomplete="off">
+    <input id="sid" inputmode="numeric" placeholder="مثلاً ۴۰۴۱۳۲۰۱۰۰۱" aria-label="کد دانشجویی">
+    <button class="btn primary" type="submit">جستجو</button>
+  </form>
+  <div id="result"></div>
+</section>
+<section class="page" id="teacher">
+  <h2 class="title">پرتال <span class="grad">استاد</span></h2>
+  <form class="search glass" id="tLogin" autocomplete="off">
+    <input id="tpass" type="password" inputmode="numeric" placeholder="رمز ورود" aria-label="رمز">
+    <button class="btn primary" type="submit">ورود</button>
+  </form>
+  <div id="tErr"></div>
+  <div id="tPanel" hidden>
+    <div id="tAlerts"></div>
+    <div id="tKpis" class="grid kpis"></div>
+    <div class="tbar glass">
+      <input id="tq" placeholder="جستجو: نام یا کد دانشجویی">
+      <select id="tg"></select>
+      <select id="tf">
+        <option value="all">همه وضعیت‌ها</option>
+        <option value="risk">فقط نیازمند توجه</option>
+        <option value="high">ریسک بالا</option>
+        <option value="abs3">غیبت ۳ یا بیشتر</option>
+        <option value="noquiz">بدون نمره کوئیز</option>
+        <option value="low">نمره زیر ۵۰</option>
+        <option value="nopr">بدون حل تمرین</option>
+      </select>
+      <select id="ts">
+        <option value="risk">مرتب‌سازی: ریسک</option>
+        <option value="name">نام</option>
+        <option value="id">کد</option>
+        <option value="abs">غیبت (بیشترین)</option>
+        <option value="quiz">نمره (کمترین)</option>
+      </select>
+      <button class="btn" id="tcsv" type="button">⬇ خروجی CSV</button>
+      <button class="btn" id="tout" type="button">خروج</button>
+    </div>
+    <p class="sub" id="tCount"></p>
+    <div class="twrap glass"><table id="tTable"></table></div>
+  </div>
+</section>
+</main>
+
 <script>
-const DATA={"96967c8f6690ec920921d403cb11e21140c6c35b8c54327cbedf4698712ad904": 100.0, "4b825e3163b886695cd92ac624b8dc7f3d5f93220dbbe8c71693362de677aa54": 100.0, "b85b4fe419c0fd4c918a6ec6d9634e19c0b97c0a2ebf60ea875c217a6876b180": 100.0, "8e9653263f45dea1b6d329c645c50ebb32276e007dffd4a6b2ae142062554b7f": null, "8fcfa47faece8e22247a9a889b0197345f18e3b30bd4d92025c2cabf8a3ea648": 70.0, "e470ac7d1241b3e0d92ec1e4030629e4bda95b4ae9529c02154eedc72dfc7055": 70.0, "fd81542d6ec1547581d8acd30bb5a92a85f2664844c219b487f3cb7d37a9a352": 70.0, "82028913b912096fc7c309b60dc690d73a6c5ac13d23f4b5132d12926aa90d45": 20.0, "4ca7295f203d80931feefd2d61f699952ddd32685b378b18337ce23084d23451": 100.0, "59770d9a845bfcd403cedba56f90d48432e982f9c90e90b5b6be32f4b2af1929": 90.0, "130641a2ec18589d9d23cf54df23510461451bd1fdf206831adfd8fe72b8c813": 90.0, "ec5f062e283a58a3d0ef94d71086f63286cc09ee4e66356feb37dbbc97e34ae0": 90.0, "c062fbed31885b0bc804fc660602cc284c558791e0864289516f9a63f692595b": 90.0, "6d3070ee588b5a07c16d5e5abd8deb32e89b797d3c309748d5ac7ce5f8354e5e": 100.0, "a84af166f66fb24e4debb8741bde6e8fe30a8f30917123c3190f93aef5cceb43": 100.0, "da320d00e8b70c5860c270737b2b6f1e4ee9631955bb4b9f79e1451e773af58a": 100.0, "9f75c79e024a4863bcddecb836af56ab021ea19eee6186c56f6815fc07d67e05": 100.0, "d3b300e88e5de5f011e5a1ac09fc3bf1a1967dbf091e06a5c1af4d05b6024958": 100.0, "252d5623913db6d96da78f2b7bb43b0b277c7881e8451389085e63d5de3142ab": null, "137b9aeadd9e9887c2a93b7ac2a32579fd6c45cffe188e7f486830cf67fc75ad": null, "78c62ed6f49d657a4ea56db9560e93e15997a4db5a9bd91617a27851ad78188a": 100.0, "3de11beedd46ac97b22db584148a333248e4fce0ff9d6f1166953db254c0de99": 100.0, "f9791bc93d04327c06df618091d5ca9623da5052a3c98493af5da8b4d1cfb6a3": 100.0, "084b436c802f015ea4181ca570a4927a0a53954a38f30e39bd2fc8e600210832": 100.0, "6ddd34a5cc2786a2b7a4f3e8f28e691b3e41d4cfcbd1124b202a94e72589ff45": 100.0, "c9ee19eef62c5b41498ae5aff83aca48d8c02406dd291c80c93d60837d1f4563": 100.0, "24031676f89ccfc2b35f330faf88e30e665273b375118fd2e07d0daf3326d38f": 100.0, "2045e9184a4800520f1276fc30c80ff69c6a0c2b54e0e84df34257b9aad8223b": 100.0, "ec10e12dd08807f330d2fcf3529c1080327b6bf7845f1d40aa6b1481cd010b00": 100.0, "dd96d8d244d004b911fb4df91b3fc379df3d722aecbf1d5e4ef99942bcb45da1": 100.0, "bb36cf1265a2246bb393b1afd9b6250982b2f81fadae875b42f55c3c5dc10c81": 100.0, "77413e6f555fd7871fe932162e3abc43a9ecf8722abb920f9d42b90cc646b016": 100.0, "efcfed59c3f35236e5a180288e946ab23e27a3be4bb4d3565fb16a7c6761b872": 100.0, "8f8cf26822a0fca60de192c1fb44dea265616e955a9e13308319b2c00eeda421": 100.0, "e7c11c4f4d18905677dce398b851a5d33ccf01f186b37322435598e8869e5c6d": 100.0, "9beb66a212923abc8fcc91d91c88785bf493791a2de5b873f6f458a0d7e22da0": 100.0, "675cae1e183013939dd8a80f77ec8f8a4e90f90f59d13cbac8e440dd2a569d95": 100.0, "640e98c90f8a4fd5ce931ca1041c95bb4dfe1864f07e2236dce5eee0b88a60d6": 100.0, "356f66cd1c1527bbd0e9e9840550225e0b062bc8cb2184128a74bd0863480976": 100.0}, SALT="OR-quiz1-";
-const fa=s=>String(s).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
-const norm=s=>s.replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).trim();
-async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-const all=Object.values(DATA), sc=all.filter(v=>v!==null), absent=all.length-sc.length;
-const avg=sc.reduce((a,b)=>a+b,0)/sc.length, sorted=[...sc].sort((a,b)=>a-b), med=sorted[Math.floor(sorted.length/2)];
-const st=[["میانگین",avg.toFixed(1),"amber"],["بیشترین",Math.max(...sc),"emerald"],["کمترین",Math.min(...sc),"rose"],["میانه",med,"sky"],["غایب",absent,"slate"]];
-document.getElementById('stats').innerHTML=st.map(([l,v,c])=>`<div class="card p-4 text-center"><div class="text-slate-400 text-sm">${l}</div><div class="text-3xl font-black text-${c}-400">${fa(v)}</div></div>`).join('');
-const vals=[...new Set(sc)].sort((a,b)=>a-b);
-Chart.defaults.color='#cbd5e1';Chart.defaults.font.family='Vazirmatn';
-new Chart(c1,{type:'bar',data:{labels:vals.map(fa),datasets:[{label:'تعداد دانشجو',data:vals.map(v=>sc.filter(x=>x===v).length),backgroundColor:'#f59e0b',borderRadius:6}]},options:{scales:{y:{ticks:{precision:0}}}}});
-const hi=sc.filter(v=>v>=80).length,mid=sc.filter(v=>v>=50&&v<80).length,lo=sc.length-hi-mid;
-new Chart(c2,{type:'doughnut',data:{labels:['۸۰ به بالا','۵۰ تا ۷۹','زیر ۵۰','غایب'],datasets:[{data:[hi,mid,lo,absent],backgroundColor:['#34d399','#fbbf24','#fb7185','#64748b'],borderColor:'#0f172a'}]}});
-const tabs=(a)=>{p1.classList.toggle('hidden',a!=1);p2.classList.toggle('hidden',a!=2);
-t1.className='px-5 py-2 rounded-full font-bold '+(a==1?'bg-amber-500 text-slate-900':'bg-slate-700');
-t2.className='px-5 py-2 rounded-full font-bold '+(a==2?'bg-amber-500 text-slate-900':'bg-slate-700')};
-t1.onclick=()=>tabs(1);t2.onclick=()=>tabs(2);
-async function look(){const c=norm(code.value);if(!c)return;
-const k=await sha(SALT+c);
-if(!(k in DATA)){res.innerHTML='<p class="text-rose-400">کد دانشجویی یافت نشد.</p>';return}
-const v=DATA[k];
-res.innerHTML=v===null?'<p class="text-slate-300 text-lg">برای این کد، غیبت ثبت شده است.</p>':`<div class="text-slate-400">نمرهٔ کوئیز گروهی اول</div><div class="text-6xl font-black text-amber-400 my-2">${fa(v)}</div><div class="text-slate-500">از ۱۰۰</div>`}
-go.onclick=look;code.addEventListener('keydown',e=>{if(e.key==='Enter')look()});
-</script></body></html>
+const studentData = [
+  { name: "سونیا ارجمند", id: "40413201001", group: "1", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅", "جلسه ۱ حل مسئله ✅"] },
+  { name: "یاسمن بیگی", id: "40413201010", group: "1", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅", "جلسه ۱ حل مسئله ✅"] },
+  { name: "محمد مهدی حق جانلو", id: "40413201016", group: "1", quiz: "100", absences: 0, practice: [] },
+  { name: "مهسا فروغی", id: "40313201032", group: "1", quiz: "غیبت", absences: 4, practice: [] },
+  { name: "امید گنجی زاده", id: "40413201039", group: "2", quiz: "70", absences: 0, practice: [] },
+  { name: "هانیه محمدی", id: "40413201043", group: "2", quiz: "70", absences: 1, practice: [] },
+  { name: "امیر حسن حق جو", id: "40413201017", group: "2", quiz: "70", absences: 0, practice: [] },
+  { name: "پریسا افشار", id: "40313201002", group: "تک نفره", quiz: "20", absences: 3, practice: [] },
+  { name: "سجاد جودکی", id: "40413201015", group: "تک نفره", quiz: "100", absences: 0, practice: [] },
+  { name: "نگار عرب", id: "40413201033", group: "3", quiz: "90", absences: 0, practice: ["جلسه ۱ حل تمرین ✅", "جلسه ۱ حل مسئله ✅"] },
+  { name: "نرگس نعیمی", id: "40413201053", group: "3", quiz: "90", absences: 0, practice: [] },
+  { name: "عرفان پناهی", id: "40413201011", group: "3", quiz: "90", absences: 0, practice: [] },
+  { name: "مهبد مهدی زاده", id: "40413201049", group: "3", quiz: "90", absences: 0, practice: [] },
+  { name: "فاطمه کمال ابادی", id: "40413201038", group: "4", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅", "جلسه ۱ حل مسئله ✅"] },
+  { name: "مهیار اکبری", id: "40413201006", group: "4", quiz: "100", absences: 0, practice: [] },
+  { name: "اتنا صمصامی", id: "40413201031", group: "4", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "مهشاد نجف خانی", id: "40413201051", group: "4", quiz: "100", absences: 0, practice: [] },
+  { name: "محمد معرفی", id: "40413201046", group: "5", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "خانم مقدسی", id: "40513205001", group: "5", quiz: "فاقد برگه", absences: 0, practice: [] },
+  { name: "آتنا رفیعی", id: "40413201027", group: "5", quiz: "غیبت", absences: 1, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "مهلا مرادی", id: "40413201044", group: "6", quiz: "100", absences: 0, practice: [] },
+  { name: "امیر محمد بابایی", id: "40413201008", group: "6", quiz: "100", absences: 0, practice: [] },
+  { name: "رویا محمدی", id: "40413201041", group: "6", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "پریا صفی خانی", id: "40413201030", group: "7", quiz: "100", absences: 1, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "زینب نعیمی", id: "40413201052", group: "7", quiz: "100", absences: 0, practice: [] },
+  { name: "مهدیه موسوی", id: "40413201048", group: "7", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "محمد جواد دشمیر", id: "40413201022", group: "7", quiz: "100", absences: 0, practice: [] },
+  { name: "فاطمه تبرته فراهانی", id: "40413201012", group: "8", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "سبحان دریایی", id: "40413201021", group: "8", quiz: "100", absences: 1, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "محمد صالح محمدپور", id: "40413201040", group: "8", quiz: "100", absences: 1, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "پویان قاسمپور", id: "40413201037", group: "8", quiz: "100", absences: 1, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "هلیا مظفری", id: "40413201045", group: "9", quiz: "100", absences: 0, practice: [] },
+  { name: "مهدی فلاحی", id: "40413201034", group: "9", quiz: "100", absences: 0, practice: [] },
+  { name: "ارش هادی پور", id: "40513205002", group: "9", quiz: "100", absences: 0, practice: [] },
+  { name: "محمد جواد نوروز زاده", id: "40413201055", group: "9", quiz: "100", absences: 1, practice: [] },
+  { name: "اریسا جمالی راد", id: "40413201014", group: "10", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "مهشید اشتری", id: "40413201004", group: "10", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "حدیث خرمی مقدم", id: "40413201018", group: "10", quiz: "100", absences: 0, practice: ["جلسه ۱ حل تمرین ✅"] },
+  { name: "امیر رضا فیروزی", id: "40413201036", group: "10", quiz: "100", absences: 3, practice: [] }
+];
+
+/* ---------- محتوا ---------- */
+const concepts = [
+  { t: "برنامه‌ریزی خطی (LP)", tag: "Linear Programming", d: "بهینه‌سازی تابع هدف خطی تحت قیدهای خطی.",
+    f: ["max Z = c₁x₁ + c₂x₂ + … + cₙxₙ", "s.t.  Σ aᵢⱼxⱼ ≤ bᵢ ,  xⱼ ≥ 0"],
+    l: ["متغیرهای تصمیم، تابع هدف، قیدها", "حل گرافیکی برای دو متغیر", "فرض‌ها: خطی‌بودن، تفکیک‌پذیری، قطعیت"] },
+  { t: "روش سیمپلکس", tag: "Simplex", d: "حرکت بین رأس‌های ناحیه شدنی تا رسیدن به بهینه.",
+    f: ["Zⱼ − Cⱼ = C_B·B⁻¹·Aⱼ − Cⱼ", "نسبت کمینه: θ = min{ bᵢ / aᵢₖ  |  aᵢₖ > 0 }"],
+    l: ["افزودن متغیر کمکی/مازاد", "انتخاب متغیر ورودی و خروجی", "Big-M و دو فاز برای جواب اولیه"] },
+  { t: "دوگان و تحلیل حساسیت", tag: "Duality", d: "هر مسئله اولیه یک مسئله دوگان دارد؛ قیمت‌های سایه‌ای.",
+    f: ["Primal: max cᵀx  s.t. Ax ≤ b, x ≥ 0", "Dual:   min bᵀy  s.t. Aᵀy ≥ c, y ≥ 0", "Strong duality: cᵀx* = bᵀy*"],
+    l: ["قضیه مکمل سستی", "قیمت سایه‌ای منابع", "تغییر در bᵢ و cⱼ"] },
+  { t: "مدل حمل‌ونقل", tag: "Transportation", d: "کمینه‌کردن هزینه ارسال از مبداها به مقصدها.",
+    f: ["min Z = ΣᵢΣⱼ cᵢⱼ xᵢⱼ", "Σⱼ xᵢⱼ = sᵢ ,  Σᵢ xᵢⱼ = dⱼ", "تعادل: Σ sᵢ = Σ dⱼ"],
+    l: ["شمال‌غربی، کمترین هزینه، ووگل", "بهینگی با MODI (u-v)", "مسئله نامتوازن و تبهگنی"] },
+  { t: "مدل تخصیص", tag: "Assignment", d: "تخصیص یک‌به‌یک منابع به کارها با کمترین هزینه.",
+    f: ["min Z = ΣΣ cᵢⱼ xᵢⱼ ,  xᵢⱼ ∈ {0,1}", "Σⱼ xᵢⱼ = 1 ,  Σᵢ xᵢⱼ = 1"],
+    l: ["روش مجارستانی", "کاهش سطری و ستونی", "پوشش صفرها با کمترین خط"] },
+  { t: "تئوری صف", tag: "Queueing", d: "تحلیل انتظار و ظرفیت سرویس‌دهی.",
+    f: ["M/M/1:  ρ = λ/μ ,  L = ρ/(1−ρ)", "Lq = ρ²/(1−ρ) ,  W = 1/(μ−λ)", "قانون لیتل: L = λW"],
+    l: ["نرخ ورود λ و سرویس μ", "پایداری: ρ < 1", "مدل‌های M/M/c و M/G/1"] },
+  { t: "شبکه‌ها", tag: "Networks", d: "کوتاه‌ترین مسیر، درخت پوشا، شار بیشینه و CPM/PERT.",
+    f: ["max v  s.t. Σ x_ij − Σ x_ji = 0 , 0 ≤ x_ij ≤ u_ij", "max-flow = min-cut", "Dijkstra: d(v) = min{ d(u) + w(u,v) }"],
+    l: ["Prim و Kruskal", "فورد-فولکرسون", "مسیر بحرانی در مدیریت پروژه"] },
+  { t: "برنامه‌ریزی عدد صحیح", tag: "Integer Programming", d: "متغیرهایی که باید صحیح باشند.",
+    f: ["max cᵀx  s.t. Ax ≤ b ,  x ∈ ℤⁿ"],
+    l: ["شاخه و کران (Branch & Bound)", "برش گومری", "مسائل کوله‌پشتی و پوشش"] }
+];
+const films = [
+  ["A Beautiful Mind", "2001", "درام • نظریه بازی‌ها", "داستان جان نش و تعادل نش؛ ریاضیات تصمیم‌های راهبردی.", "🧠", "#00f0ff", "#4b00ff", "نظریه بازی"],
+  ["Moneyball", "2011", "درام ورزشی", "استفاده از تحلیل آماری و بهینه‌سازی برای ساخت تیم بیسبال.", "⚾", "#00ff9d", "#0077ff", "داده"],
+  ["The Imitation Game", "2014", "زندگی‌نامه", "تورینگ و شکستن انیگما؛ الگوریتم و بهینه‌سازی جستجو.", "🔐", "#ff9d00", "#ff2e93", "الگوریتم"],
+  ["Hidden Figures", "2016", "درام", "محاسبه‌گران ناسا و مسیر بهینه پرواز.", "🚀", "#b400ff", "#ff2e93", "ریاضی"],
+  ["The Big Short", "2015", "درام مالی", "مدل‌سازی ریسک و بحران مالی ۲۰۰۸.", "📉", "#ff2e93", "#ff9d00", "ریسک"],
+  ["21", "2008", "درام", "شمارش ورق و احتمال شرطی در بلک‌جک.", "🃏", "#ff0044", "#7a00ff", "احتمال"],
+  ["Numb3rs", "2005–2010", "سریال", "ریاضیات در حل پرونده‌های جنایی.", "🔢", "#00f0ff", "#00ff9d", "ریاضی"],
+  ["Apollo 13", "1995", "درام", "تصمیم‌گیری بحرانی با منابع محدود.", "🌕", "#4b9bff", "#101040", "تصمیم"],
+  ["The Martian", "2015", "علمی‌تخیلی", "مدیریت بهینه منابع غذایی و اکسیژن.", "🪐", "#ff6a00", "#ff2e93", "منابع"],
+  ["Dr. Strangelove", "1964", "کمدی سیاه", "پارادوکس بازدارندگی و تصمیم‌های هسته‌ای.", "☢️", "#9aa", "#334", "نظریه بازی"],
+  ["The Computer Chronicles: Operations Research", "مستند", "مستند", "جستجو کنید: مستندهای OR، لجستیک و زنجیره تأمین.", "📼", "#00f0ff", "#b400ff", "مستند"],
+  ["Dangerous Knowledge", "2007", "مستند BBC", "کانتور، گودل و بولتزمن؛ مرزهای ریاضیات.", "♾️", "#b400ff", "#00f0ff", "مستند"]
+];
+const softs = [
+  ["Excel Solver", "XL", "افزونه داخلی اکسل برای LP، NLP و عدد صحیح؛ مناسب شروع و کلاس.", "مبتدی • گرافیکی"],
+  ["GAMS", "GA", "زبان مدل‌سازی جبری برای مسائل بزرگ با حل‌کننده‌های CPLEX و Gurobi.", "حرفه‌ای • مدل‌سازی"],
+  ["LINGO / LINDO", "LG", "محیط ساده برای نوشتن مدل‌های LP/IP/NLP با حل‌کننده داخلی.", "آموزشی • پرکاربرد"],
+  ["Python OR-Tools", "Py", "کتابخانه متن‌باز گوگل برای LP، CP-SAT، مسیریابی و شبکه.", "متن‌باز • برنامه‌نویسی"],
+  ["MATLAB", "ML", "با linprog و intlinprog و Optimization Toolbox.", "محاسبات عددی"],
+  ["Gurobi / CPLEX", "GR", "حل‌کننده‌های تجاری فوق‌سریع برای مسائل صنعتی؛ مجوز دانشگاهی دارند.", "حل‌کننده صنعتی"],
+  ["Pyomo / PuLP", "PL", "مدل‌سازی در پایتون و اتصال به CBC، GLPK و Gurobi.", "متن‌باز"],
+  ["WinQSB / TORA", "QS", "نرم‌افزارهای آموزشی کلاسیک برای سیمپلکس، حمل‌ونقل و صف.", "آموزشی"],
+  ["AMPL / Julia JuMP", "JM", "مدل‌سازی سطح‌بالا؛ JuMP سریع و متن‌باز است.", "مدل‌سازی"]
+];
+
+/* ---------- ابزارها ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const toFa = n => String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+const norm = s => String(s).replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+  .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/\D/g, "");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const score = s => /^\d+$/.test(s.quiz) ? +s.quiz : null;
+
+/* ---------- ساخت محتوا ---------- */
+$("#conceptGrid").innerHTML = concepts.map(c => `
+  <article class="card glass"><span class="tag">${c.tag}</span><h3>${c.t}</h3><p>${c.d}</p>
+  ${c.f.map(x => `<div class="formula">${esc(x)}</div>`).join("")}
+  <ul>${c.l.map(x => `<li>${x}</li>`).join("")}</ul></article>`).join("");
+
+const cats = ["همه", ...new Set(films.map(f => f[7]))];
+$("#cinemaFilters").innerHTML = cats.map((c, i) => `<button class="${i ? "" : "on"}" data-c="${c}">${c}</button>`).join("");
+function drawFilms(cat = "همه") {
+  $("#cinemaGrid").innerHTML = films.filter(f => cat === "همه" || f[7] === cat).map(f => `
+   <article class="card glass film reveal" style="--a:${f[5]};--b:${f[6]}">
+    <div class="poster">${f[4]}</div><div class="body"><h3>${esc(f[0])}</h3>
+    <div class="meta">${f[1]} · ${f[2]}</div><p>${f[3]}</p></div></article>`).join("");
+  bindGlow();
+}
+$("#cinemaFilters").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  $$("#cinemaFilters button").forEach(x => x.classList.toggle("on", x === b));
+  drawFilms(b.dataset.c);
+};
+$("#softGrid").innerHTML = softs.map(s => `
+  <article class="card glass soft"><div class="logo2">${s[1]}</div><h3 style="direction:ltr;text-align:right">${s[0]}</h3>
+  <span class="tag">${s[3]}</span><p>${s[2]}</p></article>`).join("");
+
+/* ---------- داشبورد ---------- */
+const N = studentData.length;
+const scored = studentData.filter(s => score(s) !== null);
+const avg = scored.reduce((a, s) => a + score(s), 0) / scored.length;
+const totalAbs = studentData.reduce((a, s) => a + s.absences, 0);
+const anonId = i => "S-" + String(i + 1).padStart(3, "0");
+
+function buildDashboard() {
+  const kp = [["تعداد کل دانشجویان", toFa(N)], ["میانگین کوئیز (دارندگان نمره)", toFa(avg.toFixed(1))],
+    ["تعداد گروه‌ها", toFa(new Set(studentData.map(s => s.group)).size)], ["مجموع غیبت‌ها", toFa(totalAbs)],
+    ["نمره ۱۰۰", toFa(scored.filter(s => score(s) === 100).length)]];
+  $("#kpis").innerHTML = kp.map(k => `<div class="card glass kpi"><b>${k[1]}</b><small>${k[0]}</small></div>`).join("");
+
+  const bins = [["۰–۴۹", 0, 49], ["۵۰–۷۴", 50, 74], ["۷۵–۹۹", 75, 99], ["۱۰۰", 100, 100]];
+  drawBars("#distChart", bins.map(b => [b[0], scored.filter(s => score(s) >= b[1] && score(s) <= b[2]).length]));
+
+  const absent = studentData.filter(s => s.quiz === "غیبت").length, nosheet = studentData.filter(s => s.quiz === "فاقد برگه").length;
+  const seg = [["شرکت‌کننده", scored.length, "#00f0ff"], ["غیبت", absent, "#ff2e93"], ["فاقد برگه", nosheet, "#b400ff"]];
+  let acc = 0;
+  $("#donut").style.background = "conic-gradient(" + seg.map(s => { const a = acc / N * 100; acc += s[1]; return `${s[2]} ${a}% ${acc / N * 100}%`; }).join(",") + ")";
+  $("#donutLegend").innerHTML = seg.map(s => `<li style="--k:${s[2]}">${s[0]}: ${toFa(s[1])} نفر</li>`).join("");
+
+  const groups = [...new Set(studentData.map(s => s.group))];
+  $("#groupChart").innerHTML = groups.map(g => {
+    const m = studentData.filter(s => s.group === g && score(s) !== null);
+    const a = m.length ? m.reduce((x, s) => x + score(s), 0) / m.length : 0;
+    return `<div class="hrow"><span>${g === "تک نفره" ? g : "گروه " + toFa(g)}</span><div class="track"><i data-w="${a}"></i></div><b>${toFa(Math.round(a))}</b></div>`;
+  }).join("");
+
+  const mx = Math.max(...studentData.map(s => s.absences));
+  drawBars("#absChart", Array.from({ length: mx + 1 }, (_, k) => [toFa(k) + " غیبت", studentData.filter(s => s.absences === k).length]));
+
+  $("#anonChart").innerHTML = studentData.map((s, i) => `<div class="${score(s) === null ? "bad" : ""}"><span>${anonId(i)}</span><b>${score(s) ?? "—"}</b></div>`).join("");
+}
+function drawBars(sel, data) {
+  const mx = Math.max(...data.map(d => d[1]), 1);
+  $(sel).innerHTML = data.map(d => `<div class="bar"><div data-h="${d[1] / mx * 100}"><em>${toFa(d[1])}</em></div><span>${d[0]}</span></div>`).join("");
+}
+function animateCharts() {
+  setTimeout(() => {
+    $$("#dashboard [data-h]").forEach(e => e.style.height = e.dataset.h + "%");
+    $$("#dashboard [data-w]").forEach(e => e.style.width = e.dataset.w + "%");
+  }, 80);
+}
+function resetCharts() {
+  $$("#dashboard [data-h]").forEach(e => e.style.height = "0");
+  $$("#dashboard [data-w]").forEach(e => e.style.width = "0");
+}
+
+/* ---------- پرتال ---------- */
+$("#sid").addEventListener("input", e => { e.target.value = norm(e.target.value); });
+$("#searchForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const q = norm($("#sid").value), box = $("#result");
+  if (!q) { box.innerHTML = `<div class="err">لطفاً کد دانشجویی را وارد کنید.</div>`; return; }
+  const s = studentData.find(x => x.id === q);
+  if (!s) { box.innerHTML = `<div class="err">دانشجویی با کد «${toFa(q)}» پیدا نشد. کد را دوباره بررسی کنید.</div>`; return; }
+  const sc = score(s);
+  const quiz = sc !== null
+    ? `<div class="ring" style="--p:${sc}"><span>${toFa(sc)}</span></div><p style="text-align:center">از ۱۰۰</p>`
+    : `<div class="big" style="color:var(--c3)">${s.quiz}</div><span class="status">${s.quiz === "غیبت" ? "در کوئیز حاضر نبودید" : "برگه‌ای ثبت نشده"}</span>`;
+  const gl = s.group === "تک نفره" ? "تک‌نفره" : "گروه " + toFa(s.group);
+  box.innerHTML = `
+   <div class="res-head reveal"><h3>${esc(s.name)}</h3><span class="pill">کد ${toFa(s.id)}</span><span class="pill">${gl}</span></div>
+   <div class="res-grid">
+    <div class="card glass reveal"><h3>🚪 تعداد غیبت</h3><div class="big" style="color:${s.absences > 2 ? "var(--c3)" : "var(--c1)"}">${toFa(s.absences)}</div><p>${s.absences === 0 ? "بدون غیبت؛ عالی!" : "جلسه غیبت ثبت شده"}</p></div>
+    <div class="card glass reveal"><h3>📝 کوئیز گروهی اول</h3>${quiz}</div>
+    <div class="card glass reveal"><h3>📋 جلسات حل تمرین</h3>
+     ${s.practice.length ? `<ul class="checks">${s.practice.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : `<p class="empty">هنوز مورد تیک‌خورده‌ای ثبت نشده است.</p>`}</div>
+   </div>
+   <div class="lockWrap reveal"><button class="locked" type="button" aria-disabled="true" tabindex="-1"><span class="lock">🔒</span> جزوه و فیلم جلسه حل تمرین</button><small>در آپدیت بعدی فعال می‌شود</small></div>`;
+  bindGlow();
+});
+
+/* ---------- افکت گلاو ---------- */
+function bindGlow() {
+  $$(".card").forEach(c => c.onpointermove = e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px");
+  });
+}
+
+/* ---------- مسیریاب SPA ---------- */
+const pages = $$(".page"); let current = null;
+function go() {
+  const id = (location.hash || "#home").slice(1);
+  const next = document.getElementById(id) && document.getElementById(id).classList.contains("page") ? id : "home";
+  if (next === current) return;
+  const prev = current && document.getElementById(current);
+  const show = () => {
+    pages.forEach(p => p.classList.remove("active", "leaving"));
+    document.getElementById(next).classList.add("active");
+    window.scrollTo({ top: 0 });
+    $$("nav a").forEach(a => a.classList.toggle("active", a.dataset.p === next));
+    if (next === "dashboard") { resetCharts(); animateCharts(); }
+    if (next === "home") countUp();
+    current = next;
+  };
+  if (prev) { prev.classList.remove("active"); prev.classList.add("leaving"); setTimeout(show, 230); } else show();
+  $("#menu").classList.remove("open");
+}
+addEventListener("hashchange", go);
+$("#burger").onclick = () => $("#menu").classList.toggle("open");
+
+function countUp() {
+  $$("[data-count]").forEach(el => {
+    const t = +el.dataset.count, t0 = performance.now();
+    (function f(n) { const p = Math.min((n - t0) / 1200, 1); el.textContent = toFa(Math.round(t * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(f); })(t0);
+  });
+}
+
+/* ---------- پس‌زمینه ذرات ---------- */
+(function () {
+  const cv = $("#bg"), ctx = cv.getContext("2d"); let W, H, pts = [], mouse = { x: -999, y: -999 };
+  const rs = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; pts = Array.from({ length: Math.min(90, W / 14 | 0) }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 1.8 + .6 })); };
+  addEventListener("resize", rs); addEventListener("pointermove", e => { mouse.x = e.clientX; mouse.y = e.clientY; }); rs();
+  (function loop() {
+    ctx.clearRect(0, 0, W, H);
+    pts.forEach((p, i) => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.fillStyle = "rgba(0,240,255,.8)"; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill();
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < 130) { ctx.strokeStyle = `rgba(180,0,255,${.3 * (1 - d / 130)})`; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); }
+      }
+      const dm = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+      if (dm < 160) { ctx.strokeStyle = `rgba(0,240,255,${.5 * (1 - dm / 160)})`; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
+    });
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ---------- شروع ---------- */
+$('[data-count="40"]').dataset.count = N;
+$('[data-count="7"]').dataset.count = concepts.length;
+$('[data-count="12"]').dataset.count = films.length;
+
+/* ---------- پرتال استاد ---------- */
+const T_PASS = "12344321";
+const tRisk = s => {
+  const r = []; let p = 0; const sc = score(s);
+  if (s.absences >= 3) { p += 3; r.push("غیبت زیاد (" + toFa(s.absences) + ")"); } else if (s.absences === 2) { p += 1; r.push("۲ غیبت"); }
+  if (s.quiz === "غیبت") { p += 3; r.push("غایب در کوئیز"); } else if (s.quiz === "فاقد برگه") { p += 2; r.push("فاقد برگه"); }
+  else if (sc !== null && sc < 50) { p += 3; r.push("نمره کوئیز پایین"); } else if (sc !== null && sc < 70) { p += 1; r.push("نمره متوسط"); }
+  if (!s.practice.length) { p += 1; r.push("بدون حل تمرین"); }
+  return { p, r, lvl: p >= 4 ? "hi" : p >= 2 ? "md" : "lo" };
+};
+const tLbl = { hi: "ریسک بالا", md: "نیازمند توجه", lo: "عادی" };
+const tGroup = s => s.group === "تک نفره" ? "تک‌نفره" : "گروه " + toFa(s.group);
+const tRows = studentData.map(s => ({ s, k: tRisk(s) }));
+
+function tAlerts() {
+  const hi = tRows.filter(x => x.k.lvl === "hi"), md = tRows.filter(x => x.k.lvl === "md");
+  let h = "";
+  if (hi.length) h += `<div class="alert"><b>⚠️ هشدار: ${toFa(hi.length)} دانشجو در ریسک بالا</b><ul>${hi.map(x => `<li>${esc(x.s.name)} (${toFa(x.s.id)}) — ${x.k.r.join("، ")}</li>`).join("")}</ul></div>`;
+  if (md.length) h += `<div class="alert warn"><b>توجه: ${toFa(md.length)} دانشجو نیازمند پیگیری</b></div>`;
+  const gl = [...new Set(studentData.map(s => s.group))].filter(g => g !== "تک نفره").map(g => {
+    const m = studentData.filter(s => s.group === g && score(s) !== null);
+    return m.length ? [g, m.reduce((a, s) => a + score(s), 0) / m.length] : null; }).filter(x => x && x[1] < 60);
+  if (gl.length) h += `<div class="alert warn">گروه‌های با میانگین کوئیز زیر ۶۰: ${gl.map(x => "گروه " + toFa(x[0]) + " (" + toFa(Math.round(x[1])) + ")").join("، ")}</div>`;
+  $("#tAlerts").innerHTML = h;
+  const kp = [["کل دانشجویان", N], ["ریسک بالا", hi.length], ["نیازمند توجه", md.length],
+    ["غیبت ≥ ۳", studentData.filter(s => s.absences >= 3).length], ["بدون نمره کوئیز", studentData.filter(s => score(s) === null).length],
+    ["بدون حل تمرین", studentData.filter(s => !s.practice.length).length], ["میانگین کوئیز", avg.toFixed(1)]];
+  $("#tKpis").innerHTML = kp.map(k => `<div class="card glass kpi"><b>${toFa(k[1])}</b><small>${k[0]}</small></div>`).join("");
+}
+function tRender() {
+  const q = norm($("#tq").value.trim()), g = $("#tg").value, f = $("#tf").value, so = $("#ts").value;
+  let rows = tRows.filter(({ s, k }) => {
+    if (q && !(s.name.includes(q) || s.id.includes(q))) return false;
+    if (g !== "all" && s.group !== g) return false;
+    return f === "all" || (f === "risk" && k.lvl !== "lo") || (f === "high" && k.lvl === "hi") || (f === "abs3" && s.absences >= 3)
+      || (f === "noquiz" && score(s) === null) || (f === "low" && score(s) !== null && score(s) < 50) || (f === "nopr" && !s.practice.length);
+  });
+  const key = { risk: (a, b) => b.k.p - a.k.p, name: (a, b) => a.s.name.localeCompare(b.s.name, "fa"), id: (a, b) => a.s.id.localeCompare(b.s.id),
+    abs: (a, b) => b.s.absences - a.s.absences, quiz: (a, b) => (score(a.s) ?? -1) - (score(b.s) ?? -1) }[so];
+  rows.sort(key); tRender.rows = rows;
+  $("#tCount").textContent = toFa(rows.length) + " دانشجو از " + toFa(N);
+  $("#tTable").innerHTML = `<thead><tr><th>#</th><th>نام</th><th>کد</th><th>گروه</th><th>غیبت</th><th>کوئیز</th><th>حل تمرین</th><th>وضعیت</th></tr></thead><tbody>` +
+    rows.map(({ s, k }, i) => `<tr><td>${toFa(i + 1)}</td><td>${esc(s.name)}</td><td>${toFa(s.id)}</td><td>${tGroup(s)}</td><td>${toFa(s.absences)}</td>
+    <td>${score(s) !== null ? toFa(score(s)) : s.quiz}</td><td>${s.practice.length ? "✅ " + toFa(s.practice.length) : "—"}</td>
+    <td><span class="rk ${k.lvl}">${tLbl[k.lvl]}</span>${k.r.length ? `<div class="why">${k.r.join("، ")}</div>` : ""}</td></tr>`).join("") + "</tbody>";
+}
+function tOpen() {
+  $("#tLogin").hidden = true; $("#tPanel").hidden = false; $("#tErr").innerHTML = "";
+  $("#tg").innerHTML = `<option value="all">همه گروه‌ها</option>` + [...new Set(studentData.map(s => s.group))].map(g => `<option value="${g}">${g === "تک نفره" ? "تک‌نفره" : "گروه " + toFa(g)}</option>`).join("");
+  tAlerts(); tRender(); bindGlow();
+}
+$("#tpass").addEventListener("input", e => { e.target.value = norm(e.target.value); });
+$("#tLogin").addEventListener("submit", e => {
+  e.preventDefault();
+  if (norm($("#tpass").value) === T_PASS) { sessionStorage.setItem("orT", "1"); tOpen(); }
+  else $("#tErr").innerHTML = `<div class="err">رمز نادرست است.</div>`;
+  $("#tpass").value = "";
+});
+["#tq", "#tg", "#tf", "#ts"].forEach(id => $(id).addEventListener("input", tRender));
+$("#tout").onclick = () => { sessionStorage.removeItem("orT"); $("#tPanel").hidden = true; $("#tLogin").hidden = false; };
+$("#tcsv").onclick = () => {
+  const L = ["نام,کد,گروه,غیبت,کوئیز,حل تمرین,وضعیت,دلایل"].concat(tRender.rows.map(({ s, k }) =>
+    [s.name, s.id, s.group, s.absences, s.quiz, s.practice.join(" / "), tLbl[k.lvl], k.r.join(" / ")].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(",")));
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["\ufeff" + L.join("\n")], { type: "text/csv;charset=utf-8" }));
+  a.download = "students.csv"; a.click();
+};
+if (sessionStorage.getItem("orT")) tOpen();
+
+buildDashboard(); drawFilms(); bindGlow(); go();
+
+</script>
+</body>
+</html>
